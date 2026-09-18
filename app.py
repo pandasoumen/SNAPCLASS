@@ -1,50 +1,13 @@
 
-# import streamlit as st
-
-# from src.screens.home_screen import home_screen
-# from src.screens.student_screen import student_screen
-# from src.screens.teacher_screen import teacher_screen
-
-# def main():
-#     # st.header("Welcome to the Streamlit App!")
-#     # name = st.text_input("Enter your name:")
-
-
-#     # col1, col2 = st.columns(2)
-#     # with col1:
-#     #     if st.button('Display my name',type='primary', key='btn1'):
-#     #         print("Hello", name)
-#     # with col2:
-#     #     if st.button('Clear my name',type='primary', key='btn2'):
-#     #         name = ""
-#     # st.markdown("""
-
-#     # """, unsafe_allow_html=True)
-
-#     if 'login_type' not in st.session_state:
-#         st.session_state['login_type'] = None
-
-#     match st.session_state['login_type']:
-#         case 'teacher':
-#             teacher_screen()
-
-#         case 'student':
-#             student_screen()
-
-#         case None:
-#             home_screen()
-
-# main()
-
-
-
 import streamlit as st
 
 from src.screens.home_screen import home_screen
-from src.screens.teacher_screen import teacher_screen
+from src.screens.teacher_screen import teacher_screen, teacher_dashboard, teacher_screen_register
 from src.screens.student_screen import student_screen
 
 from src.components.dialog_auto_enroll import auto_enroll_dialog
+
+
 
 def main():
     st.set_page_config(
@@ -73,3 +36,5 @@ def main():
         if st.session_state.get('is_logged_in') and st.session_state.get('user_role') == 'student':
             auto_enroll_dialog(join_code)
 main()
+
+app = main
