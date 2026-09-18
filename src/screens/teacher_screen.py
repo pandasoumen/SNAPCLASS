@@ -22,6 +22,7 @@ from src.database.config import supabase
 
 
 from src.components.dialog_voice_attendance import voice_attendance_dialog
+
 def teacher_screen():
 
     style_background_dashboard()
@@ -30,11 +31,9 @@ def teacher_screen():
     if "teacher_data" in st.session_state:
         teacher_dashboard()
     elif 'teacher_login_type' not in st.session_state or st.session_state.teacher_login_type=="login":
-        teacher_screen_login()
+        teacher_login()
     elif st.session_state.teacher_login_type == "register":
         teacher_screen_register()
-
-
 
 
 
@@ -298,7 +297,7 @@ def login_teacher(username, password):
     
 
     return False
-def teacher_screen_login():
+def teacher_login():
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
     with c1:
         header_dashboard()
