@@ -12,3 +12,4 @@ venv311/
 
 
 dist/
+.vercel

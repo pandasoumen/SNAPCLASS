@@ -1,5 +1,4 @@
-from resemblyzer import VoiceEncoder, preprocess_wav
-import numpy as np 
+import numpy as np
 import io
 import librosa
 import streamlit as st
@@ -7,12 +6,22 @@ import streamlit as st
 
 @st.cache_resource
 def load_voice_encoder():
+    try:
+        from resemblyzer import VoiceEncoder
+    except ImportError:
+        return None
+
     return VoiceEncoder()
 
 
 def get_voice_embedding(audio_bytes):
     try:
         encoder = load_voice_encoder()
+        if encoder is None:
+            st.error('Voice recognition is not available in this deployment.')
+            return None
+
+        from resemblyzer import preprocess_wav
 
         audio, sr = librosa.load(io.BytesIO(audio_bytes), sr=16000)
         wav = preprocess_wav(audio)
@@ -48,6 +57,11 @@ def process_bulk_audio(audio_bytes, candidates_dict, threshold=0.65):
 
     try:
         encoder = load_voice_encoder()
+        if encoder is None:
+            st.error('Voice recognition is not available in this deployment.')
+            return {}
+
+        from resemblyzer import preprocess_wav
 
         audio, sr = librosa.load(io.BytesIO(audio_bytes), sr=16000)
         segments = librosa.effects.split(audio, top_db=30)

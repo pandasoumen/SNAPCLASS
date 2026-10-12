@@ -16,5 +16,3 @@ segno
 pillow
 
 librosa
-webrtcvad-wheels
-resemblyzer==0.1.4
