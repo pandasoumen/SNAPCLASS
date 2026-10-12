@@ -1,20 +1,20 @@
-#Utilization
+streamlit
+
+# Utilization
 numpy
 pandas
 
 # face recognition
 scikit-learn
 dlib-bin
-git+https://github.com/ageitgey/face_recognition_models
+face-recognition-models==0.3.0
 
 supabase
 bcrypt
 
-
 segno
 pillow
 
-streamlit
-
 librosa
-resemblyzer
+webrtcvad-wheels
+resemblyzer==0.1.4

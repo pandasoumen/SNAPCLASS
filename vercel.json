@@ -1,0 +1,16 @@
+{
+  "services": {
+    "web": {
+      "root": ".",
+      "runtime": "container"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "web"
+      }
+    }
+  ]
+}

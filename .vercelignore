@@ -1,0 +1,12 @@
+.git
+.streamlit
+.venv
+venv
+venv/
+venv311
+venv311/
+__pycache__
+*.pyc
+.env
+.vscode
+dist
